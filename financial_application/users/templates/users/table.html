@@ -1,0 +1,40 @@
+{% extends "users/base.html"%}
+{%block content%}
+
+
+<br><br> 
+
+<h1> View accounts </h1>
+
+<br>  
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Type</th>
+      <th scope="col">Bal</th>
+      <th scope="col">Customer ID</th>
+      <th scope="col">Bank name</th>
+    </tr>
+  </thead>
+  <tbody>
+	{%for account in accounts%}
+    <tr>
+      <td>{{account.account_num}}</td>
+      <td>{{account.account_name}}</td>
+      <td>{{account.account_type}}</td>
+      <td>{{account.account_bal}}</td>
+      <td>{{account.customer_id}}</td>
+      <td>{{account.bank_name}}</td>
+    </tr>
+	{%endfor%}
+  </tbody>
+</table>
+
+
+<br> 
+
+{%endblock content%}
+
