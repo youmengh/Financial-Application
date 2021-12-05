@@ -37,3 +37,18 @@ class CardInfo(models.Model):
     expiration = models.CharField(max_length=100, default="MM/YY")
     customer_id = models.ForeignKey(Customer, on_delete=models.CASCADE)
     last_four_digits = models.IntegerField(primary_key=True)
+
+    def __str__(self):
+        return"CardInfo {}".format(self.card_number)
+
+class Transaction(models.Model):
+    transaction_id = models.AutoField(primary_key=True, default=0)
+    customer_id = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    account_num = models.ForeignKey(Account, on_delete=models.CASCADE)
+    previous_balance = models.DecimalField(decimal_places=2, max_digits=100)
+    amount_paid = models.DecimalField(decimal_places=2, max_digits=100)
+    new_balance = models.DecimalField(decimal_places=2, max_digits=100)
+    last_four_digits = models.ForeignKey(CardInfo, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return("Transaction {}".format(self.transaction_id))
