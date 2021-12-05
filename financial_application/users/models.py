@@ -1,7 +1,7 @@
 from django.db import models
 
 class Customer(models.Model):
-    customer_id = models.AutoField(primary_key=True)
+    customer_id = models.AutoField(primary_key=True, default=0)
     last_name = models.CharField(max_length=100, default="lastname")
     first_name = models.CharField(max_length=100, default="first")
     phone_number = models.CharField(max_length=100, default="phone")
@@ -17,3 +17,11 @@ class Bank(models.Model):
 
     def __str__(self):
         return "Bank {}".format(self.bank_name)
+
+class Accounts(models.Model):
+    account_num = models.IntegerField()
+    account_name = models.CharField(max_length=100, default="My Account")
+    account_type = models.CharField(max_length=100, default="Checking")
+    account_bal = models.DecimalField(max_digits=100, decimal_places=1)
+    customer_id = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    bank_name = models.ForeignKey(Bank, on_delete=models.CASCADE)
