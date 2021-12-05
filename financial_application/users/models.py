@@ -18,10 +18,22 @@ class Bank(models.Model):
     def __str__(self):
         return "Bank {}".format(self.bank_name)
 
-class Accounts(models.Model):
+class Account(models.Model):
     account_num = models.IntegerField()
     account_name = models.CharField(max_length=100, default="My Account")
     account_type = models.CharField(max_length=100, default="Checking")
     account_bal = models.DecimalField(max_digits=100, decimal_places=1)
     customer_id = models.ForeignKey(Customer, on_delete=models.CASCADE)
     bank_name = models.ForeignKey(Bank, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return"Account {}".format(self.account_num)
+
+class CardInfo(models.Model):
+    card_number = models.IntegerField()
+    card_holder = models.CharField(max_length=100, default="holder")
+    card_issuer = models.CharField(max_length=100, default="issuer")
+    security_code = models.IntegerField()
+    expiration = models.CharField(max_length=100, default="MM/YY")
+    customer_id = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    last_four_digits = models.IntegerField(primary_key=True)
