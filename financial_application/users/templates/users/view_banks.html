@@ -1,0 +1,33 @@
+{% extends "users/base.html"%}
+{%block content%}
+
+
+<br><br>
+
+<h1> View Banks </h1>
+
+<br>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Bank Name</th>
+      <th scope="col">Routing Number</th>
+      <th scope="col">Phone Number</th>
+    </tr>
+  </thead>
+  <tbody>
+	{%for bank in banks%}
+    <tr>
+      <td>{{bank.bank_name}}</td>
+      <td>{{bank.routing_number}}</td>
+      <td>{{bank.bank_phone}}</td>
+    </tr>
+	{%endfor%}
+  </tbody>
+</table>
+
+
+<br>
+
+{%endblock content%}

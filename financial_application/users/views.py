@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .forms import AccountForm, BankForm, UserForm
-from .models import Account
+from .models import Account, Customer, Bank
 
 
 # Create your views here.
@@ -9,12 +9,13 @@ def main_page(request):
     template_name = 'users/table.html'
 
     # code to view accounts from the database
-    accounts = Account.objects.all()
-    context = {
-        'accounts': accounts
-    }
+    # accounts = Account.objects.all()
+    # context = {
+    #     'accounts': accounts
+    # }
+
     # render the page
-    return render(request, template_name, context)
+    return render(request, template_name)
 
 
 def add_account(request):
@@ -71,6 +72,30 @@ def view_accounts(request):
     accounts = Account.objects.all()
     context = {
         'accounts': accounts
+    }
+    # render the page
+    return render(request, template_name, context)
+
+def view_users(request):
+    # template path
+    template_name = 'users/view_users.html'
+
+    # code to view accounts from the database
+    users = Customer.objects.all()
+    context = {
+        'users': users
+    }
+    # render the page
+    return render(request, template_name, context)
+
+def view_banks(request):
+    # template path
+    template_name = 'users/view_banks.html'
+
+    # code to view accounts from the database
+    banks = Bank.objects.all()
+    context = {
+        'banks': banks
     }
     # render the page
     return render(request, template_name, context)

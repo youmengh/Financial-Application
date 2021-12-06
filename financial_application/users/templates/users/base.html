@@ -60,10 +60,14 @@
     <br>
     <br>
     <a href="{% url 'view-accounts'%}">
-    <button> View Accounts</button>
+        <button type="button" class="btn btn-info"> View Accounts</button>
     </a>
-    <button type="button" class="btn btn-secondary">Secondary</button>
-    <button type="button" class="btn btn-success">Success</button>
+    <a href="{% url 'view-users'%}">
+        <button type="button" class="btn btn-secondary"> View Users</button>
+    </a>
+    <a href="{% url 'view-banks'%}">
+        <button type="button" class="btn btn-success"> View Banks</button>
+    </a>
     <button type="button" class="btn btn-danger">Danger</button>
     <button type="button" class="btn btn-warning">Warning</button>
     {%block content%}{%endblock%}

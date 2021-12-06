@@ -22,7 +22,7 @@ class Account(models.Model):
     account_num = models.IntegerField()
     account_name = models.CharField(max_length=100, default="My Account")
     account_type = models.CharField(max_length=100, default="Checking")
-    account_bal = models.DecimalField(max_digits=100, decimal_places=1)
+    account_bal = models.DecimalField(max_digits=100, decimal_places=2)
     customer_id = models.ForeignKey(Customer, on_delete=models.CASCADE)
     bank_name = models.ForeignKey(Bank, on_delete=models.CASCADE)
 

@@ -13,4 +13,6 @@ urlpatterns = [
 
     #READ operation links
     url(r'^view-accounts/', views.view_accounts, name='view-accounts'),
+    url(r'^view-users/', views.view_users, name='view-users'),
+    url(r'^view-banks/', views.view_banks, name='view-banks'),
 ]
