@@ -1,0 +1,33 @@
+
+{% extends "users/base.html"%}
+{%load crispy_forms_tags%}
+{%block content%}
+<br><br>
+
+<hr>
+
+<h2> Add user <a href="">Here</a></h2>
+
+<p1> Enter name of user </p1>
+<br>
+
+
+<br> <br> <br>
+<div class="container">
+
+	<form  method="post" enctype="multipart/form-data">
+            {%csrf_token%}
+            <div class="form-group">
+
+              {{user_form|crispy}}
+
+            </div>
+
+            <button type="submit" class="btn btn-primary">Create User</button>
+          </form>
+
+</div>
+
+<br> <br>
+
+{%endblock content%}

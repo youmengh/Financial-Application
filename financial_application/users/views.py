@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import AccountForm, BankForm
+from .forms import AccountForm, BankForm, UserForm
 from .models import Account
 # Create your views here.
 def main_page(request):
@@ -53,3 +53,20 @@ def add_bank(request):
 
     return render(request, template_name, context)
 
+
+def add_user(request):
+    template_name = 'users/add_user.html'
+
+    if request.method == "POST":
+        user_form = UserForm(request.POST)
+        if user_form.is_valid():
+            user = user_form.save(commit=False)
+            user.save()
+    else:
+        user_form = UserForm()
+
+    context = {
+            'user_form': user_form
+            }
+
+    return render(request, template_name, context)
