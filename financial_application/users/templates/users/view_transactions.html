@@ -1,0 +1,41 @@
+{% extends "users/base.html"%}
+{%block content%}
+
+
+<br><br>
+
+<h1> View Transactions </h1>
+
+<br>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Transaction ID</th>
+        <th scope="col">Customer ID</th>
+        <th scope="col">Account Number</th>
+        <th scope="col">Previous Balance</th>
+        <th scope="col">Amount Paid</th>
+        <th scope="col">New Balance</th>
+        <th scope="col">Last 4 Digits</th>
+    </tr>
+    </thead>
+    <tbody>
+    {%for transaction in transactions%}
+    <tr>
+        <td>{{transaction.transaction_id}}</td>
+        <td>{{transaction.customer_id}}</td>
+        <td>{{transaction.account_num}}</td>
+        <td>{{transaction.previous_balance}}</td>
+        <td>{{transaction.amount_paid}}</td>
+        <td>{{transaction.new_balance}}</td>
+        <td>{{transaction.last_four_digits}}</td>
+    </tr>
+    {%endfor%}
+    </tbody>
+</table>
+
+
+<br>
+
+{%endblock content%}

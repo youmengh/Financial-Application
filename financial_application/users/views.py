@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .forms import AccountForm, BankForm, UserForm
-from .models import Account, Customer, Bank, CardInfo
+from .models import Account, Customer, Bank, CardInfo, Transaction
 
 
 # Create your views here.
@@ -108,6 +108,18 @@ def view_cardinfo(request):
     cards = CardInfo.objects.all()
     context = {
         'cards': cards
+    }
+    # render the page
+    return render(request, template_name, context)
+
+def view_transactions(request):
+    # template path
+    template_name = 'users/view_transactions.html'
+
+    # code to view accounts from the database
+    transactions = Transaction.objects.all()
+    context = {
+        'transactions': transactions
     }
     # render the page
     return render(request, template_name, context)

@@ -71,8 +71,9 @@
     <a href="{% url 'view-cardinfo'%}">
         <button type="button" class="btn btn-danger"> View Card Information</button>
     </a>
-    <button type="button" class="btn btn-danger">Danger</button>
-    <button type="button" class="btn btn-warning">Warning</button>
+    <a href="{% url 'view-transactions'%}">
+        <button type="button" class="btn btn-warning"> View Transactions</button>
+    </a>
     {%block content%}{%endblock%}
 </div>
 

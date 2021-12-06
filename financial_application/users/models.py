@@ -39,7 +39,7 @@ class CardInfo(models.Model):
     last_four_digits = models.IntegerField(primary_key=True)
 
     def __str__(self):
-        return"CardInfo {}".format(self.card_number)
+        return"{}".format(self.last_four_digits)
 
 class Transaction(models.Model):
     transaction_id = models.AutoField(primary_key=True, default=0)

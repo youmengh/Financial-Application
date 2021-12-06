@@ -16,4 +16,5 @@ urlpatterns = [
     url(r'^view-users/', views.view_users, name='view-users'),
     url(r'^view-banks/', views.view_banks, name='view-banks'),
     url(r'^view-cardinfo/', views.view_cardinfo, name='view-cardinfo'),
+    url(r'^view-transactions/', views.view_transactions, name='view-transactions'),
 ]
