@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import *
 from .models import *
 
@@ -62,6 +62,7 @@ def add_user(request):
     }
     return render(request, template_name, context)
 
+
 def add_cardinfo(request):
     template_name = 'users/add_cardinfo.html'
     if request.method == "POST":
@@ -76,7 +77,19 @@ def add_cardinfo(request):
     }
     return render(request, template_name, context)
 
-
+def add_transaction(request):
+    template_name = 'users/add_transaction.html'
+    if request.method == "POST":
+        transaction_form = TransactionForm(request.POST)
+        if transaction_form.is_valid():
+            transaction = transaction_form.save(commit=False)
+            transaction.save()
+    else:
+        transaction_form = TransactionForm()
+    context = {
+        'transaction_form': transaction_form
+    }
+    return render(request, template_name, context)
 
 def view_accounts(request):
     # template path
@@ -90,6 +103,7 @@ def view_accounts(request):
     # render the page
     return render(request, template_name, context)
 
+
 def view_users(request):
     # template path
     template_name = 'users/view_users.html'
@@ -101,6 +115,7 @@ def view_users(request):
     }
     # render the page
     return render(request, template_name, context)
+
 
 def view_banks(request):
     # template path
@@ -114,6 +129,7 @@ def view_banks(request):
     # render the page
     return render(request, template_name, context)
 
+
 def view_cardinfo(request):
     # template path
     template_name = 'users/view_cardinfo.html'
@@ -125,6 +141,7 @@ def view_cardinfo(request):
     }
     # render the page
     return render(request, template_name, context)
+
 
 def view_transactions(request):
     # template path

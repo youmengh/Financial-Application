@@ -1,0 +1,32 @@
+{% extends "users/base.html"%}
+{%load crispy_forms_tags%}
+{%block content%}
+<br><br>
+
+<h2> Add Transaction </h2>
+<hr>
+
+
+<p1> Enter Transaction Information </p1>
+<br>
+
+
+<br> <br> <br>
+<div class="container">
+
+	<form  method="post" enctype="multipart/form-data">
+            {%csrf_token%}
+            <div class="form-group">
+
+              {{transaction_form|crispy}}
+
+            </div>
+
+            <button type="submit" class="btn btn-primary">Create Transaction</button>
+          </form>
+
+</div>
+
+<br> <br>
+
+{%endblock content%}
