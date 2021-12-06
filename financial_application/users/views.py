@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .forms import AccountForm, BankForm, UserForm
-from .models import Account, Customer, Bank, CardInfo, Transaction
+from .forms import *
+from .models import *
 
 
 # Create your views here.
@@ -59,6 +59,20 @@ def add_user(request):
         user_form = UserForm()
     context = {
         'user_form': user_form
+    }
+    return render(request, template_name, context)
+
+def add_cardinfo(request):
+    template_name = 'users/add_cardinfo.html'
+    if request.method == "POST":
+        card_form = CardForm(request.POST)
+        if card_form.is_valid():
+            card = card_form.save(commit=False)
+            card.save()
+    else:
+        card_form = CardForm()
+    context = {
+        'card_form': card_form
     }
     return render(request, template_name, context)
 

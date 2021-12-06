@@ -1,14 +1,13 @@
-
 {% extends "users/base.html"%}
-{%load crispy_forms_tags%} 
+{%load crispy_forms_tags%}
 {%block content%}
-<br><br> 
+<br><br>
 
-<hr> 
+<h2> Add Card Information </h2>
+<hr>
 
-<h2> Add bank account <a href="">Here</a></h2>
 
-<p1> Enter Bank Information </p1>
+<p1> Enter Card Information</p1>
 <br>
 
 
@@ -19,15 +18,15 @@
             {%csrf_token%}
             <div class="form-group">
 
-              {{bank_form|crispy}}
+              {{card_form|crispy}}
 
             </div>
 
-            <button type="submit" class="btn btn-primary">Create Bank Account</button>
+            <button type="submit" class="btn btn-primary">Create Card</button>
           </form>
 
 </div>
 
-<br> <br> 
+<br> <br>
 
 {%endblock content%}

@@ -8,7 +8,7 @@ class Customer(models.Model):
     email = models.CharField(max_length=100, default="email")
 
     def __str__(self):
-        return "Customer {}".format(self.last_name)
+        return "{}".format(self.last_name)
 
 class Bank(models.Model):
     bank_name = models.CharField(max_length=100, default="bank")
@@ -16,7 +16,7 @@ class Bank(models.Model):
     bank_phone = models.CharField(max_length=100)
 
     def __str__(self):
-        return "Bank {}".format(self.bank_name)
+        return "{}".format(self.bank_name)
 
 class Account(models.Model):
     account_num = models.IntegerField()
@@ -27,7 +27,7 @@ class Account(models.Model):
     bank_name = models.ForeignKey(Bank, on_delete=models.CASCADE)
 
     def __str__(self):
-        return"Account {}".format(self.account_num)
+        return"Account: {}".format(self.account_num)
 
 class CardInfo(models.Model):
     card_number = models.IntegerField()
@@ -39,7 +39,7 @@ class CardInfo(models.Model):
     last_four_digits = models.IntegerField(primary_key=True)
 
     def __str__(self):
-        return"{}".format(self.last_four_digits)
+        return"****-****-****-{}".format(self.last_four_digits)
 
 class Transaction(models.Model):
     transaction_id = models.AutoField(primary_key=True, default=0)
@@ -51,4 +51,4 @@ class Transaction(models.Model):
     last_four_digits = models.ForeignKey(CardInfo, on_delete=models.CASCADE)
 
     def __str__(self):
-        return("Transaction {}".format(self.transaction_id))
+        return("Transaction: {}".format(self.transaction_id))

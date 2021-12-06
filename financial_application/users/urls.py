@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^add-account/', views.add_account, name='main-page'),	
     url(r'^add-bank/', views.add_bank, name='main-page'),
     url(r'^add-user/', views.add_user, name='main-page'),
+    url(r'^add-cardinfo/', views.add_cardinfo, name='main-page'),
 
     #READ operation links
     url(r'^view-accounts/', views.view_accounts, name='view-accounts'),
