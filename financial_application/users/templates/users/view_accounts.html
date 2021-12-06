@@ -9,28 +9,35 @@
 <br>
 
 <table class="table">
-  <thead>
+    <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Account Type</th>
-      <th scope="col">Balance</th>
-      <th scope="col">Customer ID</th>
-      <th scope="col">Bank name</th>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Account Type</th>
+        <th scope="col">Balance</th>
+        <th scope="col">Customer ID</th>
+        <th scope="col">Bank name</th>
+        <th scope="col">Update</th>
     </tr>
-  </thead>
-  <tbody>
-	{%for account in accounts%}
+    </thead>
+    <tbody>
+    {%for account in accounts%}
     <tr>
-      <td>{{account.account_num}}</td>
-      <td>{{account.account_name}}</td>
-      <td>{{account.account_type}}</td>
-      <td>{{account.account_bal}}</td>
-      <td>{{account.customer_id}}</td>
-      <td>{{account.bank_name}}</td>
+        <td>{{account.account_num}}</td>
+        <td>{{account.account_name}}</td>
+        <td>{{account.account_type}}</td>
+        <td>{{account.account_bal}}</td>
+        <td>{{account.customer_id}}</td>
+        <td>{{account.bank_name}}</td>
+        <td><a href="{% url 'account_update' account.id %}">
+            <button type="button" class="btn btn-primary"> Update</button>
+        </a></td>
+        <td><a href="{% url 'account_update' account.id %}">
+            <button type="button" class="btn btn-danger"> Delete</button>
+        </a></td>
     </tr>
-	{%endfor%}
-  </tbody>
+    {%endfor%}
+    </tbody>
 </table>
 
 

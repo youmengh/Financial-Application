@@ -1,4 +1,5 @@
 from django.conf.urls import url, include
+from django.urls import path
 from django.contrib import admin
 from . import views
 
@@ -7,11 +8,12 @@ urlpatterns = [
     url(r'^main/', views.main_page, name='main-page'),
 
     #CREATE operation links
-    url(r'^add-account/', views.add_account, name='main-page'),	
+    url(r'^add-account/', views.account_form, name='main-page'),
     url(r'^add-bank/', views.add_bank, name='main-page'),
     url(r'^add-user/', views.add_user, name='main-page'),
     url(r'^add-cardinfo/', views.add_cardinfo, name='main-page'),
     url(r'^add-transaction/', views.add_transaction, name='main-page'),
+    path('account_update/<int:id>/', views.account_form, name='account_update'),
 
     #READ operation links
     url(r'^view-accounts/', views.view_accounts, name='view-accounts'),

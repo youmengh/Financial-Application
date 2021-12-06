@@ -18,20 +18,40 @@ def main_page(request):
     return render(request, template_name)
 
 
-def add_account(request):
-    template_name = 'users/add_account.html'
-    if request.method == "POST":
-        account_form = AccountForm(request.POST)
-        if account_form.is_valid():
-            account = account_form.save(commit=False)
-            account.save()
-    else:
-        account_form = AccountForm()
-    context = {
-        'account_form': account_form
-    }
-    return render(request, template_name, context)
+# def add_account(request):
+#     template_name = 'users/add_account.html'
+#     if request.method == "POST":
+#         account_form = AccountForm(request.POST)
+#         if account_form.is_valid():
+#             account = account_form.save(commit=False)
+#             account.save()
+#     else:
+#         account_form = AccountForm()
+#     context = {
+#         'account_form': account_form
+#     }
+#     return render(request, template_name, context)
 
+def account_form(request, id=0):
+    template_name = 'users/add_account.html'
+    if request.method == "GET":
+        if id == 0:
+            form = AccountForm()
+        else:
+            account = Account.objects.get(pk=id)
+            form = AccountForm(instance=account)
+        return render(request, 'users/add_account.html', {'form': form})
+    else:
+        if id == 0:
+            form = AccountForm(request.POST)
+        else:
+            account = Account.objects.get(pk=id)
+            form = AccountForm(request.POST, instance=account)
+        if form.is_valid():
+            form.save()
+        else:
+            print("invalid")
+        return redirect('/users/view-accounts/')
 
 def add_bank(request):
     template_name = 'users/add_bank.html'
@@ -47,7 +67,6 @@ def add_bank(request):
     }
     return render(request, template_name, context)
 
-
 def add_user(request):
     template_name = 'users/add_user.html'
     if request.method == "POST":
@@ -61,7 +80,6 @@ def add_user(request):
         'user_form': user_form
     }
     return render(request, template_name, context)
-
 
 def add_cardinfo(request):
     template_name = 'users/add_cardinfo.html'
