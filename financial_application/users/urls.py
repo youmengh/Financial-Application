@@ -14,6 +14,7 @@ urlpatterns = [
     url(r'^add-cardinfo/', views.add_cardinfo, name='main-page'),
     url(r'^add-transaction/', views.add_transaction, name='main-page'),
     path('account_update/<int:id>/', views.account_form, name='account_update'),
+    path('account_delete/<int:id>/', views.account_delete, name='account_delete'),
 
     #READ operation links
     url(r'^view-accounts/', views.view_accounts, name='view-accounts'),

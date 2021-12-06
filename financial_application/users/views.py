@@ -53,6 +53,11 @@ def account_form(request, id=0):
             print("invalid")
         return redirect('/users/view-accounts/')
 
+def account_delete(request, id):
+    account = Account.objects.get(pk=id)
+    account.delete()
+    return redirect('/users/view-accounts')
+
 def add_bank(request):
     template_name = 'users/add_bank.html'
     if request.method == "POST":
