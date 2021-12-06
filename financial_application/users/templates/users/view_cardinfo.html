@@ -1,0 +1,41 @@
+{% extends "users/base.html"%}
+{%block content%}
+
+
+<br><br>
+
+<h1> View Card Information </h1>
+
+<br>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Card Number</th>
+        <th scope="col">Card Holder</th>
+        <th scope="col">Card Issuer</th>
+        <th scope="col">Security Code</th>
+        <th scope="col">Expiration</th>
+        <th scope="col">Customer ID</th>
+        <th scope="col">Last 4 Digits</th>
+    </tr>
+    </thead>
+    <tbody>
+    {%for card in cards%}
+    <tr>
+        <td>{{card.card_number}}</td>
+        <td>{{card.card_holder}}</td>
+        <td>{{card.card_issuer}}</td>
+        <td>{{card.security_code}}</td>
+        <td>{{card.expiration}}</td>
+        <td>{{card.customer_id}}</td>
+        <td>{{card.last_four_digits}}</td>
+    </tr>
+    {%endfor%}
+    </tbody>
+</table>
+
+
+<br>
+
+{%endblock content%}

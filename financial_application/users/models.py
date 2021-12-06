@@ -33,7 +33,7 @@ class CardInfo(models.Model):
     card_number = models.IntegerField()
     card_holder = models.CharField(max_length=100, default="holder")
     card_issuer = models.CharField(max_length=100, default="issuer")
-    security_code = models.IntegerField()
+    security_code = models.CharField(max_length=3, default="000")
     expiration = models.CharField(max_length=100, default="MM/YY")
     customer_id = models.ForeignKey(Customer, on_delete=models.CASCADE)
     last_four_digits = models.IntegerField(primary_key=True)
