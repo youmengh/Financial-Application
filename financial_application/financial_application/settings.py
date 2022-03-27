@@ -12,6 +12,15 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+
+# import config parser to hide secret key
+try:
+    import ConfigParser
+except:
+    import configparser as ConfigParser
+
+key = ""
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -19,8 +28,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
+# grab auth token details from token.conf file
+
+config = ConfigParser.RawConfigParser()
+config.read('./cred.conf')
+
+try:
+    key = config.get('financeapp', 'secret_key')
+except ConfigParser.NoOptionError:
+    print('Could not read configuration file.')
+    sys.exit(1)
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-!4a1$2)5*i0re9=hx-=x-0&vt5k_=#n_a3(xdps+*zfqnw-g5k'
+SECRET_KEY = key
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
